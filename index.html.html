@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Design Pro Construction</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#fff;
+color:#222;
+}
+
+/* ================= TOP RIGHT ICONS ================= */
+.top-icons{
+position:fixed;
+top:20px;
+right:25px;
+display:flex;
+align-items:center;
+gap:15px;
+z-index:1002;
+}
+
+.top-icons a{
+font-size:22px;
+text-decoration:none;
+color:#ffc107;
+}
+
+.menu-icon{
+font-size:30px;
+cursor:pointer;
+color:#ffc107;
+}
+
+/* ================= SIDE MENU ================= */
+.side-menu{
+position:fixed;
+top:0;
+right:-270px;
+width:270px;
+height:100%;
+background:#111;
+transition:0.4s;
+padding-top:80px;
+z-index:1001;
+}
+
+.side-menu a{
+display:block;
+padding:15px 25px;
+color:white;
+text-decoration:none;
+border-bottom:1px solid #333;
+}
+
+.side-menu a:hover{
+background:#ffc107;
+color:black;
+}
+
+.submenu{
+display:none;
+background:#222;
+}
+
+.submenu a{
+padding-left:40px;
+}
+
+/* ================= HERO ================= */
+.hero{
+height:100vh;
+background:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c');
+background-size:cover;
+background-position:center;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+padding:20px;
+}
+
+.hero span{
+color:#ffc107;
+}
+
+.btn{
+margin-top:30px;
+padding:15px 30px;
+background:#ffc107;
+color:black;
+border:none;
+border-radius:30px;
+font-size:18px;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* ================= SECTIONS ================= */
+section{
+padding:80px 20px;
+text-align:center;
+}
+
+h2{
+color:#ffc107;
+margin-bottom:40px;
+}
+
+/* ================= IMAGES ================= */
+.images{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:25px;
+}
+
+.images img{
+width:300px;
+height:200px;
+object-fit:cover;
+border-radius:10px;
+}
+
+/* ================= PORTFOLIO ================= */
+#portfolio{
+background:#f5f6f8;
+}
+
+.card{
+background:white;
+width:300px;
+border-radius:10px;
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
+overflow:hidden;
+margin:20px;
+display:inline-block;
+vertical-align:top;
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.card-content{
+padding:15px;
+text-align:left;
+}
+
+.view-more{
+color:#00796b;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* ================= ABOUT ================= */
+#about{
+background:white;
+}
+
+/* ================= CONTACT ================= */
+#contact{
+background:#fafafa;
+}
+
+/* ================= FORM POPUP ================= */
+.form-popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+justify-content:center;
+align-items:center;
+z-index:2000;
+}
+
+.form-box{
+background:white;
+padding:30px;
+border-radius:10px;
+width:90%;
+max-width:400px;
+position:relative;
+}
+
+.close-btn{
+position:absolute;
+top:10px;
+right:15px;
+font-size:22px;
+cursor:pointer;
+}
+
+input, textarea{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+textarea{
+height:90px;
+}
+
+.submit-btn{
+width:100%;
+padding:12px;
+background:#ffc107;
+border:none;
+border-radius:30px;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* ================= PORTFOLIO POPUP ================= */
+.portfolio-popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+justify-content:center;
+align-items:center;
+z-index:3000;
+}
+
+.portfolio-box{
+background:white;
+padding:20px;
+border-radius:10px;
+width:90%;
+max-width:500px;
+text-align:center;
+position:relative;
+}
+
+.portfolio-box img{
+width:100%;
+height:250px;
+object-fit:cover;
+margin-bottom:15px;
+
+}
+.offer-marquee {
+  margin-top: 15px;
+  background: #ffb400;
+  color: #000;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 16px;
+}
+}
+</style>
+</head>
+
+
+<body>
+<form name="callback" method="POST" data-netlify="true" style="max-width:500px;margin:30px auto;text-align:left;">
+  
+  <!-- Hidden input for Netlify -->
+  <input type="hidden" name="form-name" value="callback">
+
+  <h3 style="text-align:center;color:green;">Request a Call Back</h3>
+
+  <p>
+    <label>
+      Name:
+      <input type="text" name="name" required 
+      style="width:100%;padding:10px;margin-top:5px;border:1px solid #ccc;">
+    </label>
+  </p>
+
+  <p>
+    <label>
+      Phone Number:
+      <input type="tel" name="phone" required 
+      style="width:100%;padding:10px;margin-top:5px;border:1px solid #ccc;">
+    </label>
+  </p>
+
+  <p style="text-align:center;">
+    <button type="submit" 
+    style="background:#f7b500;color:black;padding:10px 25px;border:none;font-weight:bold;cursor:pointer;">
+      Submit
+    </button>
+<div class="offer-marquee">
+  <marquee behavior="scroll" direction="left">
+    केवल ₹3 प्रति वर्ग फुट में घर का नक्शा बनवाने के लिए संपर्क करें।
+  </marquee>
+</div></form>
+<!-- TOP RIGHT ICONS -->
+<div class="top-icons">
+<a href="tel:+919304750957">📞</a>
+<a href="mailto:karnprashantnitj@gmail.com">📧</a>
+<div class="menu-icon" onclick="toggleMenu()">☰</div>
+</div>
+
+<!-- SIDE MENU -->
+<div class="side-menu" id="sideMenu">
+<a href="#home" onclick="closeMenu()">Home</a>
+<a href="#" onclick="toggleServices()">Services ▾</a>
+<div class="submenu" id="servicesMenu">
+<a href="#architectural" onclick="closeMenu()">Architectural Design</a>
+<a href="#construction" onclick="closeMenu()">Construction Design</a>
+</div>
+<a href="#portfolio" onclick="closeMenu()">Portfolio</a>
+<a href="#about" onclick="closeMenu()">About Us</a>
+<a href="#contact" onclick="closeMenu()">Contact Us</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+<h1>Build Your Dream Home with <span>Design Pro Construction</span></h1>
+<p>Building Homes Simplified</p>
+<button class="btn" onclick="openForm()">Get Free Construction Estimate</button>
+</section>
+
+<!-- ARCHITECTURAL -->
+<section id="architectural" style="padding:100px 30px; background:#f5f>
+ <h2 style="text-align:center; font-size:32px; margin-bottom:50px;">
+
+<h2 style="color:#f4c430; font-size:40px; font-weight:bold;">
+Architectural Design
+</h2>
+<div style="width:100%; padding:0 60px; margin:30px 0;">
+  <p style="font-size:20px; line-height:1.9; color:black; font-weight:light; text-align:center;">
+    Design Pro Construction delivers innovative and functional architectural design solutions tailored to modern living.
+    We specialize in 2D floor planning, 3D elevation design, structural layout planning, and detailed working drawings.
+    Our approach focuses on smart space utilization, aesthetic excellence, structural safety, and cost-effective solutions.
+    Every design is carefully planned to combine creativity with engineering precision, ensuring your residential or commercial
+    project stands out with elegance and long-lasting performance.
+  </p>
+</div>
+
+    <div style="max-width:1200px; margin:auto; text-align:center;">
+
+        <!-- Projects Container -->
+<div style="display:flex; justify-content:center; flex-wrap:wrap; gap:20px;">
+
+    <!-- Project 1 -->
+    <div style="width:400px; background:white; box-shadow:0 3px 12px rgba(0,0,0,0.08);">
+        <img src="images\p5.png" 
+             style="width:100%; height:500px; object-fit:cover;">
+        <div style="padding:15px; text-align:left;">
+            <h3>Modern Apartment Project</h3>
+            <p>Location: Patna</p>
+        </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div style="width:400px; background:white; box-shadow:0 3px 12px rgba(0,0,0,0.08);">
+        <img src="images\pic2.png" 
+             style="width:100%; height:500px; object-fit:cover;">
+        <div style="padding:15px; text-align:left;">
+            <h3>Luxury Residential Building</h3>
+            <p>Location: Patna</p>
+        </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div style="width:400px; background:white; box-shadow:0 3px 12px rgba(0,0,0,0.08);">
+        <img src="images\project.png" 
+             style="width:100%; height:500px; object-fit:cover;">
+        <div style="padding:15px; text-align:left;">
+            <h3>Residential Building Project</h3>
+            <p>Location: Muzaffarpur </p>
+        </div>
+    </div>
+
+    <!-- Project 4 -->
+    <div style="width:400px; background:white; box-shadow:0 3px 12px rgba(0,0,0,0.08);">
+        <img src="images\project.png" 
+             style="width:100%; height:500px; object-fit:cover;">
+        <div style="padding:15px; text-align:left;">
+            <h3> Residential Building</h3>
+            <p>Location: Hajipur</p>
+        </div>
+    </div>
+
+
+<!-- CONSTRUCTION -->
+<section id="construction" style="background:#f2f2f2;">
+<h2 style="color:#2e7d32; font-size:40px; font-weight:bold;">
+Construction
+ Design
+</h2>
+<div style="width:100%; padding:0 60px; margin:30px 0;">
+  <p style="font-size:20px; line-height:1.9; color:black; font-weight:light; text-align:center;">
+    At Design Pro Construction, we provide reliable and high-quality construction design services
+    that ensure structural strength, durability, and long-term performance.
+    Our team manages residential and commercial construction projects with expert supervision,
+    precise execution, and modern building techniques.
+    From foundation work to final finishing, we maintain strict quality control,
+    transparency, and timely project delivery to transform approved designs into strong and sustainable structures.
+  </p>
+</div>
+<div class="images">
+<img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e">
+<img src="https://images.unsplash.com/photo-1599423300746-b62533397364">
+</div>
+</section>
+
+<!-- PORTFOLIO SECTION -->
+<section id="portfolio" style="padding:100px 30px; background:#f5f6f8;">
+
+   <h2 style="color:#2e7d32; font-size:40px; font-weight:bold;">
+    Our Portfolio
+</h2>
+    <div style="max-width:1200px; margin:auto; text-align:center;">
+
+        <!-- Project 1 -->
+        <div style="width:300px; background:white; display:inline-block; margin:20px; box-shadow:0 3px 12px rgba(0,0,0,0.08);">
+            <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d" 
+                 style="width:100%; height:200px; object-fit:cover;">
+            <div style="padding:15px; text-align:left;">
+                <h3>Modern Residential Project</h3>
+                <p>Location: Patna</p>
+                <p>Area: 4500 sqft</p>
+                <p>Structure: G+3</p>
+                <p style="color:gray; cursor:pointer;">View More</p>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div style="width:300px; background:white; display:inline-block; margin:20px; box-shadow:0 3px 12px rgba(0,0,0,0.08);">
+            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625" 
+                 style="width:100%; height:200px; object-fit:cover;">
+            <div style="padding:15px; text-align:left;">
+                <h3>Luxury Villa</h3>
+                <p>Location: Muzaffarpur</p>
+                <p>Area: 6000 sqft</p>
+                <p>Structure: Duplex</p>
+                <p style="color:gray; cursor:pointer;">View More</p>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div style="width:300px; background:white; display:inline-block; margin:20px; box-shadow:0 3px 12px rgba(0,0,0,0.08);">
+            <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be" 
+                 style="width:100%; height:200px; object-fit:cover;">
+            <div style="padding:15px; text-align:left;">
+                <h3>Commercial Complex</h3>
+                <p>Location: Gaya</p>
+                <p>Area: 10000 sqft</p>
+                <p>Structure: G+5</p>
+                <p style="color:gray; cursor:pointer;">View More</p>
+            </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div style="width:300px; background:white; display:inline-block; margin:20px; box-shadow:0 3px 12px rgba(0,0,0,0.08);">
+            <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994" 
+                 style="width:100%; height:200px; object-fit:cover;">
+            <div style="padding:15px; text-align:left;">
+                <h3>Office Building</h3>
+                <p>Location: Bhagalpur</p>
+                <p>Area: 8500 sqft</p>
+                <p>Structure: G+4</p>
+                <p style="color:gray; cursor:pointer;">View More</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+</section><!-- ABOUT US SECTION -->
+<section id="about" style="background:white; padding:100px 20px; text-align:center;">
+
+    <!-- Image -->
+    <div style="max-width:1000px; margin:auto;">
+        <img src="images\pic2.png"
+             alt="Commercial Building"
+             style="width:100%; height:auto; border-radius:5px;">
+    </div>
+
+    <!-- Company Details -->
+    <div style="max-width:900px; margin:50px auto 0 auto; text-align:center;">
+        <h2 style="font-size:32px; margin-bottom:20px;">About Design Pro Construction</h2>
+
+        <p style="font-size:18px; line-height:1.8; color:#555;">
+            Design Pro Construction is a professional architectural and construction firm based in Bihar.
+            We specialize in modern architectural planning, 3D elevation design, structural drawing,
+            and complete residential & commercial construction services.
+        </p>
+
+        <p style="font-size:18px; line-height:1.8; color:#555;">
+            Our mission is to deliver high-quality, innovative, and cost-effective building solutions
+            tailored to our clients' requirements. We combine technical expertise with creative design
+            to transform ideas into reality.
+        </p>
+
+        <p style="font-size:18px; line-height:1.8; color:#555;">
+            From concept to completion, Design Pro Construction ensures transparency,
+            precision, and excellence in every project we undertake.
+        </p>
+
+    </div>
+
+</section>
+<!-- GOOGLE REVIEWS SECTION -->
+<section id="reviews" style="padding:80px 60px; background:#f7b500;">
+
+    <h2 style="text-align:center; font-size:32px; font-weight:bold; color:black; margin-bottom:50px;">
+        What Our Clients Say
+    </h2>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:30px;">
+
+        <!-- Review 1 -->
+        <div style="background:white; padding:30px; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.1);">
+            <h3 style="margin-bottom:10px;">Sharthak Kumar</h3>
+            <div style="color:#FFD700; font-size:20px; text-shadow:1px 1px 2px black;">
+                ★ ★ ★ ★ ★
+            </div>
+            <p style="margin-top:15px; line-height:1.6;">
+               "I had an excellent experience with my architect. They understood my vision perfectly, created a thoughtful building plan, 
+                and guided me smoothly through the process. Highly professional and creative—I would definitely recommend them!"
+            </p>
+        </div>
+
+        <!-- Review 2 -->
+        <div style="background:white; padding:30px; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.1);">
+            <h3 style="margin-bottom:10px;">Rahul Verma</h3>
+            <div style="color:#FFD700; font-size:20px; text-shadow:1px 1px 2px black;">
+                ★ ★ ★ ★ ★
+            </div>
+            <p style="margin-top:15px; line-height:1.6;">
+                Highly satisfied with architectural planning. The team delivered modern and practical design solutions.
+            </p>
+        </div>
+
+        <!-- Review 3 -->
+        <div style="background:white; padding:30px; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.1);">
+            <h3 style="margin-bottom:10px;">Priya Singh</h3>
+           <div style="font-size:20px; letter-spacing:3px;">
+    <span style="color:#FFD700; text-shadow:1px 1px 2px black;">★★★★</span>
+    <span style="color:#ddd;">★</span>
+</div>
+            <p style="margin-top:15px; line-height:1.6;">
+                Construction work was smooth and well managed. Quality and finishing were excellent.
+            </p>
+        </div>
+
+        <!-- Review 4 -->
+        <div style="background:white; padding:30px; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.1);">
+            <h3 style="margin-bottom:10px;">Amit Kumar</h3>
+            <div style="color:#FFD700; font-size:20px; text-shadow:1px 1px 2px black;">
+                ★ ★ ★ ★ ★
+            </div>
+            <p style="margin-top:15px; line-height:1.6;">
+                Transparent pricing and professional communication throughout the project duration.
+            </p>
+        </div>
+
+        <!-- Review 5 -->
+        <div style="background:white; padding:30px; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.1);">
+            <h3 style="margin-bottom:10px;">Sneha Patel</h3>
+            <div style="color:#FFD700; font-size:20px; text-shadow:1px 1px 2px black;">
+                ★ ★ ★ ★ ★
+            </div>
+            <p style="margin-top:15px; line-height:1.6;">
+                Very creative architectural ideas and timely project completion. Highly recommended.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact" style="padding:100px 60px; background:#111; color:white;">
+
+    <h2 style="text-align:center; font-size:34px; margin-bottom:60px; color:#ffc107;">
+        Contact Us
+    </h2>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:40px; text-align:center;">
+
+        <!-- Phone -->
+        <div style="background:#1c1c1c; padding:40px; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,0.4);">
+            <div style="font-size:40px; margin-bottom:15px;">📞</div>
+            <h3 style="margin-bottom:10px; color:#ffc107;">Call Us</h3>
+            <a href="tel:+919304750957" style="color:white; text-decoration:none; font-size:18px;">
+                +91-9304750957
+            </a>
+
+        </div>
+
+        <!-- Email -->
+        <div style="background:#1c1c1c; padding:40px; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,0.4);">
+            <div style="font-size:40px; margin-bottom:15px;">📧</div>
+            <h3 style="margin-bottom:10px; color:#ffc107;">Email Us</h3>
+            <a href="mailto:karnprashantnitj@gmail.com" style="color:white; text-decoration:none; font-size:18px;">
+                karnprashantnitj@gmail.com
+            </a>
+        </div>
+
+        <!-- Address -->
+        <div style="background:#1c1c1c; padding:40px; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,0.4);">
+            <div style="font-size:40px; margin-bottom:15px;">📍</div>
+            <h3 style="margin-bottom:10px; color:#ffc107;">Our Location</h3>
+            <p style="font-size:18px;">
+                Khemnichak Patna Bihar, India
+            </p>
+        </div>
+
+        <!-- Social Media -->
+        <div style="background:#1c1c1c; padding:40px; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,0.4);">
+            <div style="font-size:40px; margin-bottom:15px;">🌐</div>
+            <h3 style="margin-bottom:20px; color:#ffc107;">Follow Us</h3>
+
+            <a href="#" target="_blank" style="display:block; color:white; text-decoration:none; margin-bottom:10px;">
+                Facebook
+            </a>
+
+            <a href="#" target="_blank" style="display:block; color:white; text-decoration:none;">
+                Instagram
+            </a>
+</section>
+<!-- FORM POPUP -->
+<div class="form-popup" id="formPopup" onclick="outsideClick(event)">
+<div class="form-box">
+<span class="close-btn" onclick="closeForm()">✖</span>
+<h2>Free Consultation</h2>
+
+<form action="https://formsubmit.co/karnprashantnitj@gmail.com" method="POST">
+<input type="text" name="Name" placeholder="Your Name" required>
+<input type="tel" name="Phone" placeholder="Phone Number" required>
+<input type="number" name="Plot Length" placeholder="Plot Length (ft)" required>
+<input type="number" name="Plot Breadth" placeholder="Plot Breadth (ft)" required>
+<input type="hidden" name="_captcha" value="false">
+<button class="submit-btn">Submit</button>
+</form>
+
+</div>
+</div>
+</section>
+
+<script>
+function toggleMenu(){
+let menu=document.getElementById("sideMenu");
+menu.style.right = menu.style.right=="0px" ? "-270px" : "0";
+}
+function closeMenu(){ document.getElementById("sideMenu").style.right="-270px"; }
+function toggleServices(){
+let sub=document.getElementById("servicesMenu");
+sub.style.display = sub.style.display=="block" ? "none" : "block";
+}
+function openForm(){ document.getElementById("formPopup").style.display="flex"; }
+function closeForm(){ document.getElementById("formPopup").style.display="none"; }
+function openPortfolio(title,loc,area,str,img){
+document.getElementById("popupTitle").innerText=title;
+document.getElementById("popupLocation").innerText=loc;
+document.getElementById("popupArea").innerText=area;
+document.getElementById("popupStructure").innerText=str;
+document.getElementById("popupImg").src=img;
+document.getElementById("portfolioPopup").style.display="flex";
+}
+function closePortfolio(){ document.getElementById("portfolioPopup").style.display="none"; }
+</script>
+
+</body>
+</html>
